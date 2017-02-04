@@ -9,7 +9,7 @@ end
 
 repo = Rugged::Repository.new(ARGV[0])
 
-repo.tags.sort_by{|t|t.name}.each do |tag|
+repo.tags.sort_by{|t|t.name}.reverse.each do |tag|
     atag = repo.lookup(tag.target_id)
 
     if atag.is_a? Rugged::Tag::Annotation
