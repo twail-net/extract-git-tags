@@ -17,9 +17,18 @@ class RepoTag
         @tag.tagger[:time]
     end
 
+    def color
+        case @repo_name
+            when "backend" then "blue"
+            when "webclient" then "green"
+            when "android" then "brown"
+            when "ios" then "darkred"
+        end
+    end
+
     def to_s
-        s = "## #{@repo_name}: #{@tag.name}\n"
-        s += "*#{self.time}*\n"
+        s = "===== #{@repo_name}: #{@tag.name} =====\n"
+        s += "== #{self.time} ==\n"
         s += @tag.message.split("\n").map{|l| "  #{l}"}.join("\n")
         return s
     end
